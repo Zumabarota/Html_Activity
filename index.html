@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+		<title>title</title>
+		<link rel="stylesheet" href="style.css">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<style>
+			li {
+				color: green;
+			}
+			li.bold {
+				font-weight: bold;
+			}
+			a[href*="code"] {
+				color: red;
+				font-family: monospace;
+			}
+		</style>
+	</head>
+    <body>
+		<!-- Header -->
+		<div class="header" id="header">
+			<button class="button" onclick="side_toggle()">☰</button>
+			hdr
+		</div>
+		<!-- Sidebar -->
+		<div class="sidebar" id="sidebar"
+		style="display:none">
+			<p>Sidebar</p>
+			<a href="#" class="bar-item w3-button">Link 1</a>
+			<a href="#" class="bar-item w3-button">Link 2</a>
+			<a href="#" class="bar-item w3-button">Link 3</a>
+		</div>
+		<!-- Body -->
+		<div class="section">
+			<p>words words words</p>
+			<a href="https://www.codecademy.com/learn">Codecademy</a>
+			<a href="https://www.codewars.com/">Codewars</a>
+			<ol>
+				<li>a</li>
+				<li class="bold">b</li>
+				<li>c</li>
+			</ol>
+		</div>
+		<br>
+		
+		<div class="tab-buttons">
+			<button class="tab-btn" id="tab-btn-a" onclick="btn_a()">A</button>
+			<button class="tab-btn" id="tab-btn-b" onclick="btn_b()">B</button>
+			<button class="tab-btn" id="tab-btn-c" onclick="btn_c()">C</button>
+		</div>
+		<!-- Grid -->
+		<div class="grid" id="tab-a">
+			<div class="box a">A</div>
+			<div class="box b">B</div>
+			<div class="box c">C</div>
+			<div class="box d">D</div>
+			<div class="box e">E</div>
+		</div>
+		<div class="grid" id="tab-b">
+			<div class="box a">F</div>
+			<div class="box b">G</div>
+			<div class="box c">H</div>
+			<div class="box d">I</div>
+			<div class="box e">J</div>
+		</div>
+		<div class="grid" id="tab-c">
+			<div class="box a">K</div>
+			<div class="box b">L</div>
+			<div class="box c">M</div>
+			<div class="box d">N</div>
+			<div class="box e">O</div>
+		</div>
+		<button id="btnRandom" onclick="randomiser()">?</button>
+    </body>
+</html>
+
+<script>
+	function side_toggle() {
+		if(document.getElementById("sidebar").style.display == "none"){
+			document.getElementById("sidebar").style.display = "block";
+		}
+		else{
+			document.getElementById("sidebar").style.display = "none";
+		}
+	}
+	function btn_a() {
+		document.getElementById("tab-btn-a").style.backgroundColor = "hsl(120, 5%, 90%)";
+		document.getElementById("tab-btn-b").style.backgroundColor = "hsl(120, 5%, 70%)";
+		document.getElementById("tab-btn-c").style.backgroundColor = "hsl(120, 5%, 70%)";
+		document.getElementById("tab-a").style.display = "grid";
+		document.getElementById("tab-b").style.display = "none";
+		document.getElementById("tab-c").style.display = "none";
+	}
+	function btn_b() {
+		document.getElementById("tab-btn-a").style.backgroundColor = "hsl(120, 5%, 70%)";
+		document.getElementById("tab-btn-b").style.backgroundColor = "hsl(120, 5%, 90%)";
+		document.getElementById("tab-btn-c").style.backgroundColor = "hsl(120, 5%, 70%)";
+		document.getElementById("tab-a").style.display = "none";
+		document.getElementById("tab-b").style.display = "grid";
+		document.getElementById("tab-c").style.display = "none";
+	}
+	function btn_c() {
+		document.getElementById("tab-btn-a").style.backgroundColor = "hsl(120, 5%, 70%)";
+		document.getElementById("tab-btn-b").style.backgroundColor = "hsl(120, 5%, 70%)";
+		document.getElementById("tab-btn-c").style.backgroundColor = "hsl(120, 5%, 90%)";
+		document.getElementById("tab-a").style.display = "none";
+		document.getElementById("tab-b").style.display = "none";
+		document.getElementById("tab-c").style.display = "grid";
+	}
+	function randomiser() {
+		let rndCol = "hsl(" + Math.floor(Math.random() * 360) + ", " + 
+							Math.floor(Math.random() * 40 + 50) + "%, " + 
+							Math.floor(Math.random() * 40 + 50) + "%)";
+		document.getElementById("btnRandom").style.backgroundColor = rndCol;
+	}
+</script>

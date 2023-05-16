@@ -1,0 +1,34 @@
+
+.card {
+    width: 250px;
+}
+
+#rgbBlock, #hslBlock {
+    border: 1px solid black;
+    width: 200px;
+    height: 200px;
+}
+
+#rgbBlock {
+    background-color: rgba(128, 128, 128, 1);
+}
+
+#hslBlock {
+    background-color: hsla(120, 50%, 50%, 1);
+}
+
+.slidecontainer {
+    width: 100%;
+}
+
+/* .custom-range::-webkit-slider-thumb {
+    background: red;
+}
+  
+.custom-range::-moz-range-thumb {
+    background: red;
+}
+  
+.custom-range::-ms-thumb {
+    background: red;
+} */

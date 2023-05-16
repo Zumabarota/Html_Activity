@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <link rel="stylesheet" href="./colours.css">
+
+    <title>.</title>
+  </head>
+  <body>
+    <div class="container">
+        <!-- Colour cards -->
+        <div class="row text-center">
+            <div class="card text-white bg-primary">
+                <div class="card-body">
+                    <h5 class="card-title">*-primary</h5>
+                    <p class="card-text">#007bff</p>
+                </div>
+            </div>
+            <div class="card text-white bg-secondary">
+                <div class="card-body">
+                    <h5 class="card-title">*-secondary</h5>
+                    <p class="card-text">#6c757d</p>
+                </div>
+            </div>
+            <div class="card text-white bg-success">
+                <div class="card-body">
+                    <h5 class="card-title">*-success</h5>
+                    <p class="card-text">#28a745</p>
+                </div>
+            </div>
+            <div class="card text-white bg-danger">
+                <div class="card-body">
+                    <h5 class="card-title">*-danger</h5>
+                    <p class="card-text">#dc3545</p>
+                </div>
+            </div>
+            <div class="card text-white bg-warning">
+                <div class="card-body">
+                    <h5 class="card-title">*-warning</h5>
+                    <p class="card-text">#ffc107</p>
+                </div>
+            </div>
+            <div class="card text-white bg-info">
+                <div class="card-body">
+                    <h5 class="card-title">*-info</h5>
+                    <p class="card-text">#17a2b8</p>
+                </div>
+            </div>
+            <div class="card bg-light">
+                <div class="card-body">
+                    <h5 class="card-title">*-light</h5>
+                    <p class="card-text">#f8f9fa</p>
+                </div>
+            </div>
+            <div class="card text-white bg-dark">
+                <div class="card-body">
+                    <h5 class="card-title">*-dark</h5>
+                    <p class="card-text">#343a40</p>
+                </div>
+            </div>
+        </div>
+        <!-- RGB/HSL blocks -->
+        <div class="row">
+            <div class="column border border-dark m-2 p-2">
+                <div id="rgbBlock"></div>
+                <div class="slidecontainer">
+                    <p>R<input type="range" min="0" max="255" value="128" class="slider" id="redRange"></p>
+                    <p>G<input type="range" min="0" max="255" value="128" class="slider" id="grnRange"></p>
+                    <p>B<input type="range" min="0" max="255" value="128" class="slider" id="bluRange"></p>
+                    <p>A<input type="range" min="0" max="100" value="100" class="slider" id="aRangeRgb"></p>
+                    <p><span id="rgbConcat"></span></p>
+                </div>
+            </div>
+            <div class="column border border-dark m-2 p-2">
+                <div id="hslBlock"></div>
+                <div class="slidecontainer">
+                    <p>H<input type="range" min="0" max="339" value="120" class="slider" id="hueRange"></p>
+                    <p>S<input type="range" min="0" max="100" value="50" class="slider" id="satRange"></p>
+                    <p>L<input type="range" min="0" max="100" value="50" class="slider" id="lgtRange"></p>
+                    <p>A<input type="range" min="0" max="100" value="100" class="slider" id="aRangeHsl"></p>
+                    <p><span id="hslConcat"></span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+  </body>
+</html>
+
+
+<!-- blue, primary:#007bff
+indigo:#6610f2
+purple:#6f42c1
+pink:#e83e8c
+red, danger:#dc3545
+orange:#fd7e14
+yellow, warning:#ffc107
+green, success:#28a745
+teal:#20c997
+cyan, info:#17a2b8
+white:#fff
+gray, secondary:#6c757d
+gray-dark, dark:#343a40
+light:#f8f9fa -->
+
+<script>
+    // RGB section
+    var redSlider = document.getElementById("redRange");
+    var grnSlider = document.getElementById("grnRange");
+    var bluSlider = document.getElementById("bluRange");
+    var aSliderRgb = document.getElementById("aRangeRgb");
+    document.getElementById("rgbConcat").innerHTML = "rgba(128, 128, 128, 1)"
+    redSlider.oninput = function() {
+        redSlider.value = this.value;
+        rgbUpdate()
+    }
+    grnSlider.oninput = function() {
+        grnSlider.value = this.value;
+        rgbUpdate()
+    }
+    bluSlider.oninput = function() {
+        bluSlider.value = this.value;
+        rgbUpdate()
+    }
+    aSliderRgb.oninput = function() {
+        aSliderRgb.value = this.value;
+        rgbUpdate()
+    }
+    function rgbUpdate () {
+        document.getElementById("rgbConcat").innerHTML = "rgba(" + redSlider.value + ", " + grnSlider.value + ", " + bluSlider.value + ", " + aSliderRgb.value/100 + ")";
+        document.getElementById("rgbBlock").style.background = "rgba(" + redSlider.value + ", " + grnSlider.value + ", " + bluSlider.value + ", " + aSliderRgb.value/100 + ")";
+    }
+
+    // HSL section
+    var hueSlider = document.getElementById("hueRange");
+    var satSlider = document.getElementById("satRange");
+    var lgtSlider = document.getElementById("lgtRange");
+    var aSliderHsl = document.getElementById("aRangeHsl");
+    document.getElementById("hslConcat").innerHTML = "hsla(120, 50%, 50%, 1)";
+    hueSlider.oninput = function() {
+        hueSlider.value = this.value;
+        hslUpdate()
+    }
+    satSlider.oninput = function() {
+        satSlider.value = this.value;
+        hslUpdate()
+    }
+    lgtSlider.oninput = function() {
+        lgtSlider.value = this.value;
+        hslUpdate()
+    }
+    aSliderHsl.oninput = function() {
+        aSliderHsl.value = this.value;
+        hslUpdate()
+    }
+    function hslUpdate () {
+        document.getElementById("hslConcat").innerHTML = "hsla(" + hueSlider.value + ", " + satSlider.value + "%, " + lgtSlider.value + "%, " + aSliderHsl.value/100 + ")";
+        document.getElementById("hslBlock").style.background = "hsla(" + hueSlider.value + ", " + satSlider.value + "%, " + lgtSlider.value + "%, " + aSliderHsl.value/100 + ")";
+    }
+
+</script>
